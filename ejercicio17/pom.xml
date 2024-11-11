@@ -7,7 +7,7 @@
   <packaging>jar</packaging>
   <name>ejercicio17-objetos</name>
   <description>Este arquetipo es usado para objetos I y II</description>
-
+	
   <licenses>
     <license>
       <name>The Apache License, Version 2.0</name>
@@ -46,6 +46,11 @@
       <version>5.7.2</version>
       <scope>test</scope>
     </dependency>
+    <dependency>
+    	<groupId>oo1</groupId>
+		<artifactId>ejercicio14</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</dependency>
   </dependencies>
   
   <scm>
