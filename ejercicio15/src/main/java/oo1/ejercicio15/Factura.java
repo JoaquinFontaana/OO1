@@ -12,14 +12,10 @@ public class Factura {
 		this.domicilio = domicilio;
 		this.cuadro = cuadro;
 		this.fechaEmision= LocalDate.now();
-		this.bonificacion = this.factorPotencia();
+		this.bonificacion = this.domicilio.esFactorPotencia();
 		this.montoFinal = this.calcularMontoFinal();
 	}
-	private boolean factorPotencia() {
-		double r = this.domicilio.getConsumoReactivo();
-		double a = this.domicilio.getConsumoActivo();
-		return r/Math.sqrt(Math.pow(a, 2)+Math.pow(r, 2)) > 0.8;
-	}
+
 	private double calcularConsumo() {
 		return this.domicilio.getConsumoActivo() * this.cuadro.getPrecio();
 	}
@@ -33,4 +29,5 @@ public class Factura {
 	public double getMontoFinal() {
 		return this.montoFinal;
 	}
+
 }
