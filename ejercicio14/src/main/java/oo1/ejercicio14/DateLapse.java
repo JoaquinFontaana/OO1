@@ -19,7 +19,7 @@ public class DateLapse {
 		return this.to;
 	}
 	public int sizeInDays() {
-		return (int) from.until(to,ChronoUnit.DAYS);
+		return (int) from.until(to,ChronoUnit.DAYS) + 1;
 	}
 	public boolean includesDate(LocalDate other) {
 		return (other.isEqual(from) || other.isAfter(from)) && 

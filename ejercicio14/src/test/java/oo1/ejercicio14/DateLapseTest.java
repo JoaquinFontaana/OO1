@@ -14,7 +14,7 @@ public class DateLapseTest {
 	}
 	@Test
 	public void sizeInDaysTest() {
-		assertEquals(28,periodo.sizeInDays());
+		assertEquals(29,periodo.sizeInDays());
 	}
 	@Test
 	public void includesDateTest() {

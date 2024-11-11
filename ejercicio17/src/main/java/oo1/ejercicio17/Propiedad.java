@@ -41,4 +41,7 @@ public class Propiedad {
 		}
 		return false;
 	}
+	public ArrayList<Reserva> getReservas() {
+		return reservas;
+	}
 }

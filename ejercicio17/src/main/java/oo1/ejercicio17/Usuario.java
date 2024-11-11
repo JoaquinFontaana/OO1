@@ -15,13 +15,18 @@ public class Usuario {
 		this.propiedades = new ArrayList<>();
 		this.reservas = new ArrayList<>();
 	}
-	public void reservar(LocalDate from,LocalDate to,Propiedad propiedad) {
+	public boolean reservar(LocalDate from,LocalDate to,Propiedad propiedad) {
 		Reserva r= propiedad.crearReserva(from, to);
 		if(r != null) {
 			this.reservas.add(r);
+			return true;
 		}
+		return false;
+	}
+	public void agregarPropiedad(Propiedad propiedad) {
+		this.propiedades.add(propiedad);
 	}
 	public double calcularIngresos() {
-		return this.propiedades.stream().mapToDouble(p -> p.calcularIngresos()).sum();
+		return 0.75 * this.propiedades.stream().mapToDouble(p -> p.calcularIngresos()).sum();
 	}
 }
