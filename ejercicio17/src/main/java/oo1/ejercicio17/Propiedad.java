@@ -35,7 +35,7 @@ public class Propiedad {
 		return this.reservas.stream().mapToDouble(r -> r.calcularPrecio()).sum();
 	}
 	public boolean consultarDisponibilidad(LocalDate from,LocalDate to) {
-		return this.reservas.stream().allMatch(r -> ! r.consultarDisponibilidad(from, to));
+		return this.reservas.stream().allMatch(r -> r.consultarDisponibilidad(from, to));
 	}
 	public double cancelarReserva(Reserva reserva){
 		if(this.reservas.remove(reserva)) {

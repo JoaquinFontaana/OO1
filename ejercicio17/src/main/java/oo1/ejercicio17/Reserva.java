@@ -10,7 +10,7 @@ public class Reserva {
 		this.propiedad = propiedad;
 	}
 	public boolean consultarDisponibilidad(LocalDate from, LocalDate to) {
-		return this.periodo.includesDate(from) || this.periodo.includesDate(to);
+		return ! (this.periodo.includesDate(from) || this.periodo.includesDate(to));
 	}
 	public double calcularPrecio() {
 		return this.propiedad.getPrecioPorNoche() * this.periodo.sizeInDays();
