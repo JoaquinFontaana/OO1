@@ -7,9 +7,11 @@ public class Propiedad {
 	private String nombre;
 	private String direccion;
 	private Double precioPorNoche;
+	private PoliticaCancelacion politica;
 	private ArrayList<Reserva> reservas;
 	
-	public Propiedad(String nombre,String direccion,double precioPorNoche) {
+	public Propiedad(String nombre,String direccion,double precioPorNoche,PoliticaCancelacion politica) {
+		this.politica = politica;
 		this.direccion = direccion;
 		this.nombre = nombre;
 		this.precioPorNoche = precioPorNoche;
@@ -33,13 +35,13 @@ public class Propiedad {
 		return this.reservas.stream().mapToDouble(r -> r.calcularPrecio()).sum();
 	}
 	public boolean consultarDisponibilidad(LocalDate from,LocalDate to) {
-		return this.reservas.stream().allMatch(r -> r.consultarDisponibilidad(from, to));
+		return this.reservas.stream().allMatch(r -> ! r.consultarDisponibilidad(from, to));
 	}
-	public boolean cancelarReserva(Reserva reserva){
-		if(!reserva.estaActiva()) {
-			return this.reservas.remove(reserva);
+	public double cancelarReserva(Reserva reserva){
+		if(this.reservas.remove(reserva)) {
+			return politica.calcularDevolucion(reserva);
 		}
-		return false;
+		throw new RuntimeException("Reserva no encontrada");
 	}
 	public ArrayList<Reserva> getReservas() {
 		return reservas;

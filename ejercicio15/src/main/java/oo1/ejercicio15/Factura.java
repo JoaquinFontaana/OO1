@@ -8,6 +8,7 @@ public class Factura {
 	private boolean bonificacion;
 	private double montoFinal;
 	private CuadroTarifario cuadro;
+	
 	public Factura(Domicilio domicilio,CuadroTarifario cuadro) {
 		this.domicilio = domicilio;
 		this.cuadro = cuadro;

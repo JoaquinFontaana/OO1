@@ -10,7 +10,7 @@ public class ReservaTest {
 	private Reserva reserva;
 	@BeforeEach
 	public void setUp() {
-		Propiedad p = new Propiedad("Departamento 2 ambientes","1924",10000);
+		Propiedad p = new Propiedad("Departamento 2 ambientes","1924",10000,new PoliticaEstricta());
 		reserva = new Reserva(LocalDate.now().minusDays(1),LocalDate.now().plusDays(2),p);
 	}
 	@Test

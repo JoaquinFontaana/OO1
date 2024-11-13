@@ -10,7 +10,7 @@ public class PropiedadTest {
 	private Propiedad propiedad;
 	@BeforeEach
 	public void setUp() {
-		propiedad = new Propiedad("Departamento 2 ambientes","1924",10000);
+		propiedad = new Propiedad("Departamento 2 ambientes","1924",10000,new PoliticaEstricta());
 	}
 	@Test
 	public void crearReservaTest() {
@@ -35,9 +35,7 @@ public class PropiedadTest {
 	}
 	@Test
 	public void cancelarReservaTest() {
-		Reserva r1 = propiedad.crearReserva(LocalDate.now().minusDays(1), LocalDate.now().plusDays(2));
-		assertEquals(false,propiedad.cancelarReserva(r1));
 		Reserva r2 = propiedad.crearReserva(LocalDate.now().plusDays(3), LocalDate.now().plusDays(4));
-		assertEquals(true,propiedad.cancelarReserva(r2));
+		assertEquals(0,propiedad.cancelarReserva(r2));
 	}
 }
